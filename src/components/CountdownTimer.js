@@ -68,8 +68,8 @@ const CountdownTimer = () => {
                     <span>Event has started!</span>
                 )}
             </div>
-            <p>Click on the snowflakes to increase your score!</p>
-            <div>Score: {score}</div>
+            <p style={{ fontSize: '14px' }}>Click on the snowflakes to increase your score!</p>
+            <div style={{ fontSize: '16px' }}>Score: {score}</div>
             {snowflakes.map(snowflake => 
                 snowflake.isVisible && (
                     <Snowflake
@@ -79,6 +79,7 @@ const CountdownTimer = () => {
                     />
                 )
             )}
+            
         </div>
     );
 };
