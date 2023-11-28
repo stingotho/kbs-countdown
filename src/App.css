@@ -56,3 +56,17 @@
   font-weight: bold;
 }
 
+/* App.css or a separate stylesheet */
+.snowflake {
+  color: white;
+  font-size: 1.5em;
+  user-select: none;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
