@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  overflow: hidden;
 }
 
 .App-logo {
@@ -22,7 +23,9 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  position: relative; /* Add this to ensure absolute positioning for children */
 }
+
 
 .App-link {
   color: #61dafb;
@@ -68,6 +71,6 @@
 
 /* App.css or a separate stylesheet */
 @keyframes fall {
-  0% { transform: translateY(-100vh); } /* Start from above the top of the viewport */
-  100% { transform: translateY(100vh); } /* End below the bottom of the viewport */
+  0% { top: -10%; }
+  100% { top: 100%; }
 }

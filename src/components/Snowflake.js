@@ -1,16 +1,16 @@
-// Snowflake.js
 import React from 'react';
 
-const Snowflake = ({ id, left, duration, delay }) => {
+const Snowflake = ({ id, left, duration, delay, onClick }) => {
     const style = {
         position: 'absolute',
         left: `${left}%`,
-        top: '-5%', // Start above the viewport
+        top: '-5%',
         animationDuration: `${duration}s`,
-        animationDelay: `${delay}s`
+        animationDelay: `${delay}s`,
+        cursor: 'pointer'
     };
 
-    return <div className="snowflake" id={`snowflake-${id}`} style={style}>❄️</div>;
+    return <div className="snowflake" style={style} onClick={onClick}>❄️</div>;
 };
 
 export default Snowflake;
