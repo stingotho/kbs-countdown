@@ -4,15 +4,17 @@ import './App.css';
 import CountdownTimer from './components/CountdownTimer';
 import Snowflake from './components/Snowflake';
 
+// App.js or CountdownTimer.js
 const createSnowflakes = (num) => {
   return Array.from({ length: num }, (_, index) => {
-    const left = Math.random() * 100; // random position from left
-    const animationDuration = 5 + Math.random() * 10; // random duration between 5 to 15 seconds
-    const animationDelay = Math.random() * 10; // random start delay
+    const left = Math.random() * 100; // Random horizontal position
+    const animationDuration = 3 + Math.random() * 5; // Duration between 3 to 8 seconds
+    const animationDelay = 0; // Uniform delay of 0.5 seconds for all snowflakes
 
     return <Snowflake key={index} id={index} left={left} duration={animationDuration} delay={animationDelay} />;
   });
 };
+
 
 function App() {
   const snowflakes = createSnowflakes(50); // Create 50 snowflakes

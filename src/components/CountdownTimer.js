@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from 'react';
 
 const CountdownTimer = () => {
-    const [timeLeft, setTimeLeft] = useState({});
+    // Function to calculate time left until the target date
+    const calculateTimeLeft = () => {
+        const targetDate = new Date('December 14, 2023 00:00:00').getTime();
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance > 0) {
+            return {
+                days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+                hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                seconds: Math.floor((distance % (1000 * 60)) / 1000)
+            };
+        }
+        return {}; // Return an empty object if the event has started
+    };
+
+    // Initialize the state with the correct time left
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
     useEffect(() => {
-        const targetDate = new Date('December 14, 2023 00:00:00').getTime();
-
         const interval = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            setTimeLeft({ days, hours, minutes, seconds });
-
-            if (distance < 0) {
-                clearInterval(interval);
-                setTimeLeft({});
-            }
+            setTimeLeft(calculateTimeLeft());
         }, 1000);
 
         return () => clearInterval(interval);
