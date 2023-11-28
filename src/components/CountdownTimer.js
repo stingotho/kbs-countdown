@@ -2,23 +2,31 @@ import React, { useState, useEffect } from 'react';
 import Snowflake from './Snowflake';
 
 const CountdownTimer = () => {
-    const [timeLeft, setTimeLeft] = useState(/* ... */);
-    const [score, setScore] = useState(0);
-    const [snowflakes, setSnowflakes] = useState([]); // State for snowflakes
+    // Function to calculate time left until the event
+    const calculateTimeLeft = () => {
+        const targetDate = new Date('December 14, 2023 00:00:00').getTime();
+        const now = new Date().getTime();
+        const distance = targetDate - now;
 
-    useEffect(() => {
-        setSnowflakes(createSnowflakes(50));
-    }, []);
-
-    const handleSnowflakeClick = (id) => {
-        setScore(prevScore => prevScore + 1);
-        setSnowflakes(prevSnowflakes => prevSnowflakes.map(snowflake => 
-            snowflake.id === id ? { ...snowflake, isVisible: false } : snowflake
-        ));
+        if (distance > 0) {
+            return {
+                days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+                hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                seconds: Math.floor((distance % (1000 * 60)) / 1000),
+            };
+        }
+        return {};
     };
 
-    const createSnowflakes = (num) => {
-        return Array.from({ length: num }, (_, id) => {
+    // Initialize the state
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+    const [score, setScore] = useState(0);
+    const [snowflakes, setSnowflakes] = useState([]);
+
+    useEffect(() => {
+        // Snowflakes initialization
+        const newSnowflakes = Array.from({ length: 50 }, (_, id) => {
             return {
                 id,
                 left: Math.random() * 100,
@@ -27,11 +35,39 @@ const CountdownTimer = () => {
                 isVisible: true
             };
         });
+        setSnowflakes(newSnowflakes);
+
+        // Countdown timer update
+        const interval = setInterval(() => {
+            setTimeLeft(calculateTimeLeft());
+        }, 1000);
+
+        // Clean up interval
+        return () => clearInterval(interval);
+    }, []);
+
+    // Handle snowflake click
+    const handleSnowflakeClick = (id) => {
+        setScore(prevScore => prevScore + 1);
+        setSnowflakes(prevSnowflakes => prevSnowflakes.map(snowflake => 
+            snowflake.id === id ? { ...snowflake, isVisible: false } : snowflake
+        ));
     };
 
     return (
         <div>
             <h1>❄️KBS Winter Break!❄️</h1>
+            <div>
+                {Object.keys(timeLeft).length > 0 ? (
+                    Object.entries(timeLeft).map(([unit, value]) => (
+                        <span key={unit}>
+                            {value} {unit}{' '}
+                        </span>
+                    ))
+                ) : (
+                    <span>Event has started!</span>
+                )}
+            </div>
             <p>Click on the snowflakes to increase your score!</p>
             <div>Score: {score}</div>
             {snowflakes.map(snowflake => 
