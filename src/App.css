@@ -68,5 +68,6 @@
 
 /* App.css or a separate stylesheet */
 @keyframes fall {
-  to { transform: translateY(100vh); }
+  0% { transform: translateY(-100vh); } /* Start from above the top of the viewport */
+  100% { transform: translateY(100vh); } /* End below the bottom of the viewport */
 }
