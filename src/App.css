@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 .App {
   text-align: center;
   overflow: hidden;
+  font-family: "Press Start 2P", cursive; /* Fallback font is cursive */
 }
 
 .App-logo {
@@ -25,7 +28,6 @@
   color: white;
   position: relative; /* Add this to ensure absolute positioning for children */
 }
-
 
 .App-link {
   color: #61dafb;
@@ -68,9 +70,57 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+@media (max-width: 600px) {
+  .snowflake {
+    color: white;
+    font-size: 1.2em;
+    user-select: none;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+}
 
 /* App.css or a separate stylesheet */
 @keyframes fall {
-  0% { top: -10%; }
-  100% { top: 100%; }
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+.custom-font {
+  padding-bottom: 10px;
+}
+@media (max-width: 600px) {
+  .custom-font {
+    font-size: 18px;
+  }
+}
+.custom-font-timer {
+  padding-bottom: 50px;
+}
+@media (max-width: 600px) {
+  .custom-font-timer {
+    font-size: 10px;
+  }
+}
+
+.custom-paragraph-size {
+  font-size: 10px;
+}
+@media (max-width: 600px) {
+  .custom-paragraph-size {
+    font-size: 8px;
+  }
+}
+
+.custom-score-size {
+  font-size: 10px;
+}
+@media (max-width: 600px) {
+  .custom-score-size {
+    font-size: 8px;
+  }
 }
