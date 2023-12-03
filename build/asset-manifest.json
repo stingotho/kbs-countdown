@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/kbs-countdown/static/css/main.872cca9e.css",
-    "main.js": "/kbs-countdown/static/js/main.56cb66a0.js",
-    "static/js/787.8d6c290c.chunk.js": "/kbs-countdown/static/js/787.8d6c290c.chunk.js",
-    "index.html": "/kbs-countdown/index.html",
-    "main.872cca9e.css.map": "/kbs-countdown/static/css/main.872cca9e.css.map",
-    "main.56cb66a0.js.map": "/kbs-countdown/static/js/main.56cb66a0.js.map",
-    "787.8d6c290c.chunk.js.map": "/kbs-countdown/static/js/787.8d6c290c.chunk.js.map"
+    "main.css": "./static/css/main.a1b62dbd.css",
+    "main.js": "./static/js/main.e16b6b00.js",
+    "static/js/787.8d6c290c.chunk.js": "./static/js/787.8d6c290c.chunk.js",
+    "index.html": "./index.html",
+    "main.a1b62dbd.css.map": "./static/css/main.a1b62dbd.css.map",
+    "main.e16b6b00.js.map": "./static/js/main.e16b6b00.js.map",
+    "787.8d6c290c.chunk.js.map": "./static/js/787.8d6c290c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.872cca9e.css",
-    "static/js/main.56cb66a0.js"
+    "static/css/main.a1b62dbd.css",
+    "static/js/main.e16b6b00.js"
   ]
 }
